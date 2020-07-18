@@ -1,5 +1,25 @@
 const readFile = require('./boat-ramps-reader');
 
+const boat_ramps = async () => {
+    let boat_ramps = [];
+    const data = await readFile()
+        for(let i=0; i<data["features"].length; i++){
+            let boat_ramp = []
+            const type = data["features"][i]['properties']['type'];            
+            if(type === "Boat Ramp"){
+                const coordinates = data["features"][i]['geometry']['coordinates'];
+                const id = data["features"][i]["id"].toString()
+                boat_ramp.push({
+                    id, 
+                    coordinates : coordinates[0][0]
+                })
+                boat_ramps.push(boat_ramp)
+            }
+        }
+        
+    return boat_ramps
+}
+
 const ramps_per_construction = async () => {
     let ramps_per_construction = {}
     const data = await readFile()
@@ -34,5 +54,6 @@ const ramps_per_size_category = async () => {
         }
     return ramps_per_size_category
 }
-module.exports = { ramps_per_construction, ramps_per_size_category};
+
+module.exports = { ramps_per_construction, ramps_per_size_category, boat_ramps};
 
