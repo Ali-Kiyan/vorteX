@@ -20,18 +20,18 @@ const boat_ramps = async () => {
     return boat_ramps
 }
 
-const ramps_per_construction = async () => {
-    let ramps_per_construction = {}
+const ramps_per_material = async () => {
+    let ramps_per_material = {}
     const data = await readFile()
         for(let i=0; i<data["features"].length; i++){
             const material = data["features"][i]['properties']['material'];
-            if(ramps_per_construction[material]){
-                ramps_per_construction[material] = ramps_per_construction[material]+1;
+            if(ramps_per_material[material]){
+                ramps_per_material[material] = ramps_per_material[material]+1;
             }else{
-                ramps_per_construction[material] = 1
+                ramps_per_material[material] = 1
             }
         }
-    return ramps_per_construction
+    return ramps_per_material
 }
 
 const ramps_per_size_category = async () => {
@@ -55,5 +55,5 @@ const ramps_per_size_category = async () => {
     return ramps_per_size_category
 }
 
-module.exports = { ramps_per_construction, ramps_per_size_category, boat_ramps};
+module.exports = { ramps_per_material, ramps_per_size_category, boat_ramps};
 
