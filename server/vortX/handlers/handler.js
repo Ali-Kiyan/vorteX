@@ -1,5 +1,9 @@
-let getData = require("./boat-ramps-reader");
+const readFile = require('./boat-ramps-reader');
 
-getData.then((data)=>{
-    console.log(data)
-})
+readFile()
+    .then(data => {
+        console.log(data["features"])
+    })
+    .catch(err => {
+        console.log(err);
+    });

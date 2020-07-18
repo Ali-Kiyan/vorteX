@@ -1,15 +1,13 @@
-var fs = require('fs'),
-    JSONStream = require('JSONStream');
-
-var stream = fs.createReadStream('boat_ramps.geojson', {encoding: 'utf8'}),
-    parser = JSONStream.parse('features.*');
-
-stream.pipe(parser);
-
-const getData = () => new Promise((resolve, reject) => {
-        parser.on('data', function (result) {
-            resolve(result)
+const fs = require('fs');
+const path = require('path')
+const boat_ramps_path = path.join(__dirname, 'boat_ramps.geojson')
+const readFile = () => new Promise((resolve, reject) => {
+        fs.readFile(boat_ramps_path, 'utf8', (err, data) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(JSON.parse(data));
         });
-      });
+    });
 
-module.exports = getData();
+module.exports = readFile
