@@ -1,0 +1,1 @@
+import { BOAT_RAMPS_URL } from '../components/utils/misc';
