@@ -12,7 +12,7 @@ export function boatRampList(){
     
 }
 
-export function boatRampPerMaterial(){
+export function boatRampsPerMaterial(){
 
     const data = fetchWithCORSHeader(RAMPS_PER_CONSTRUCTION_MATERIAL_URL)
     return {

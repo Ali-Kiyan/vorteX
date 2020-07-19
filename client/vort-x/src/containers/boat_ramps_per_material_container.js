@@ -1,20 +1,23 @@
 import React,{ useEffect} from 'react'
 import { connect } from 'react-redux';
-import { boatRampList } from '../actions/boat_ramp_actions'
+import { boatRampsPerMaterial } from '../actions/boat_ramp_actions'
 import { bindActionCreators } from 'redux';
 
-const BoatRampsContainer = (props)=> {
+const BoatRampsPerMaterialContainer = (props)=> {
 
     useEffect(()=>{
-    props.boatRampList()
+    props.boatRampsPerMaterial()
 
     },[])
-    console.log(props)
+    const materialData = props.boat_ramps.boatRampsPerMaterialList;
+    if(materialData !== undefined){
+console.log(Object.keys(materialData).map((item,idx)=>materialData[item]))
+    }
 
 
     return (
         <div>
-
+            {materialData && Object.keys(materialData).map((item,idx)=><p>{item}:{materialData[item]}</p>)}
         </div>
     )
 }
@@ -26,7 +29,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({boatRampList}, dispatch)
+    return bindActionCreators({boatRampsPerMaterial}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoatRampsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(BoatRampsPerMaterialContainer)

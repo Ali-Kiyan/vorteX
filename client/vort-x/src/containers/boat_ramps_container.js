@@ -9,7 +9,6 @@ const BoatRampsContainer = (props)=> {
     props.boatRampList()
 
     },[])
-    console.log(props)
 
 
     return (
