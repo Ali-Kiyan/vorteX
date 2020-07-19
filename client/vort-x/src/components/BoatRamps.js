@@ -1,10 +1,10 @@
 import React from 'react';
-import MainContainer from '../containers//main_container'
+import BoatRampsContainer from '../containers/boat_ramps_container'
 
 const BoatRamp = (props) => {
     return (
         <div>
-            <MainContainer />
+            <BoatRampsContainer />
         </div>
     )
 }
