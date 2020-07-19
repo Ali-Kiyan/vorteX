@@ -2,11 +2,11 @@ import { BOAT_RAMPS_URL } from '../components/utils/misc';
 
 export function boatRampList(){
 
-    const request = fetch(`${BOAT_RAMPS_URL}`)
+    const data = fetch(BOAT_RAMPS_URL).then(response=>response.json())
 
     return {
         type: 'GET_BOAT_RAMPS',
-        payload: 
+        payload: data
     }
     
 }
