@@ -1,5 +1,5 @@
 // SERVER ROUTES
-
-export const BOAT_RAMPS_URL = "/ramps/boat_ramps/coordinates"
-export const RAMPS_PER_CONSTRUCTION_MATERIAL_URL = "/ramps/material"
-export const RAMPS_PER_SIZE_URL = "/ramps/size"
+const HOST = "localhost:3001"
+export const BOAT_RAMPS_URL = `${HOST}/ramps/boat_ramps/coordinates`
+export const RAMPS_PER_CONSTRUCTION_MATERIAL_URL = `${HOST}/ramps/materials`
+export const RAMPS_PER_SIZE_URL = `${HOST}/ramps/sizes`

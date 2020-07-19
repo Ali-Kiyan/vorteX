@@ -25,11 +25,11 @@ router.get('/boat_ramps/coordinates', function(req, res, next) {
 
   /* GET ramps per material. */
 router.get('/materials', function(req, res, next) {
-    ramps_per_construction().then((data)=>res.send(data))
+    ramps_per_material().then((data)=>res.send(data))
   });
 
   /* GET ramps per size */
-router.get('/size', function(req, res, next) {
+router.get('/sizes', function(req, res, next) {
     ramps_per_size_category().then((data)=>res.send(data))
   });
 
