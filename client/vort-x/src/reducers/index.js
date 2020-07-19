@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import boat_ramp from './boat_ramp_reducer';
+import boat_ramps from './boat_ramp_reducer';
 
 const rootReducer = combineReducers({
-    boat_ramp
+    boat_ramps
 })
 
 export default rootReducer;
