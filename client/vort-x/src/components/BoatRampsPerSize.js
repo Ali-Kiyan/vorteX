@@ -1,6 +1,8 @@
 import React from 'react';
-import { BoatRampPerSizeContainer } from '../containers/boat_ramps_per_size_container';
+import BoatRampsPerSizeContainer  from '../containers/boat_ramps_per_size_container';
 
-export const BoatRampPerSize = (props) => {
-    return <BoatRampPerMaterialContainer />
+const BoatRampsPerSize = (props) => {
+    return <BoatRampsPerSizeContainer />
 }
+
+export default BoatRampsPerSize;

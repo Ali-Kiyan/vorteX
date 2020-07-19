@@ -10,10 +10,6 @@ const BoatRampsPerMaterialContainer = (props)=> {
 
     },[])
     const materialData = props.boat_ramps.boatRampsPerMaterialList;
-    if(materialData !== undefined){
-console.log(Object.keys(materialData).map((item,idx)=>materialData[item]))
-    }
-
 
     return (
         <div>

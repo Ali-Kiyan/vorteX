@@ -22,10 +22,9 @@ export function boatRampsPerMaterial(){
     
 }
 
-export function boatRampPerSize(){
+export function boatRampsPerSize(){
 
     const data = fetchWithCORSHeader(RAMPS_PER_SIZE_URL)
-
     return {
         type: 'GET_BOAT_RAMPS_PER_SIZE',
         payload: data
