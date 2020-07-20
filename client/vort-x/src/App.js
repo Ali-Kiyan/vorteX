@@ -3,9 +3,8 @@ import './App.css';
 import { DefaultButton } from './components/shared_components/DefaultButton'
 import {Clock} from 'grommet'
 import BoatRamps from './components/BoatRamps'
-// import BoatRampsPerMaterial from './components/BoatRampsPerMaterial'
+import BoatRampsPerMaterial from './components/BoatRampsPerMaterial'
 // import BoatRampsPerSize from './components/BoatRampsPerSize'
-import ScatterChart from './components/ScatterChart'
 
 function App() {
   return (
@@ -13,10 +12,9 @@ function App() {
       <Clock type="digital"  style={{width: "30%", height: "70vh"}}/>
       {/* <DefaultButton name="click me" onClick={()=>alert("hi")} color="black" /> */}
       <BoatRamps />
-      {/* <BoatRampsPerMaterial />
-      <BoatRampsPerSize /> */}
+      <BoatRampsPerMaterial />
+      {/* <BoatRampsPerSize /> */}
       <div style={{width: "70%", height: "70vh"}}>
-      <ScatterChart />
       </div>
     </div>
   );

@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/ramps', rampsRouter);
+app.use('/api/v1', indexRouter);
+app.use('/api/v1/ramps/boat_ramps', rampsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

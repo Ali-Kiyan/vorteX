@@ -19,7 +19,7 @@ readFile()
 });
 
   /* GET boat ramps listing */
-router.get('/boat_ramps/coordinates', function(req, res, next) {
+router.get('/coordinates', function(req, res, next) {
   boat_ramps().then((data)=>res.send(data))
 });
 
