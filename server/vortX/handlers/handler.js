@@ -1,23 +1,8 @@
 const readFile = require('./boat-ramps-reader');
 
 const boat_ramps = async () => {
-    let boat_ramps = [];
     const data = await readFile()
-        for(let i=0; i<data["features"].length; i++){
-            let boat_ramp = []
-            const type = data["features"][i]['properties']['type'];            
-            if(type === "Boat Ramp"){
-                const coordinates = data["features"][i]['geometry']['coordinates'];
-                const id = data["features"][i]["id"].toString()
-                boat_ramp.push({
-                    id, 
-                    coordinates : coordinates[0][0]
-                })
-                boat_ramps.push(boat_ramp)
-            }
-        }
-        
-    return boat_ramps
+    return data
 }
 
 const ramps_per_material = async () => {

@@ -3,18 +3,21 @@ import './App.css';
 import { DefaultButton } from './components/shared_components/DefaultButton'
 import {Clock} from 'grommet'
 import BoatRamps from './components/BoatRamps'
-import BoatRampsPerMaterial from './components/BoatRampsPerMaterial'
-import BoatRampsPerSize from './components/BoatRampsPerSize'
+// import BoatRampsPerMaterial from './components/BoatRampsPerMaterial'
+// import BoatRampsPerSize from './components/BoatRampsPerSize'
+// import {Gm} from './components/googlemap'
 
 function App() {
   return (
     <div className="App">
-      <Clock type="digital" />
-      <DefaultButton name="click me" onClick={()=>alert("hi")} color="black" />
+      <Clock type="digital"  style={{width: "30%", height: "70vh"}}/>
+      {/* <DefaultButton name="click me" onClick={()=>alert("hi")} color="black" /> */}
       <BoatRamps />
-      <BoatRampsPerMaterial />
-      <BoatRampsPerSize />
-      <p>this</p>
+      {/* <BoatRampsPerMaterial />
+      <BoatRampsPerSize /> */}
+      {/* <div style={{width: "70%", height: "70vh"}}>
+      <Gm />
+      </div> */}
     </div>
   );
 }
