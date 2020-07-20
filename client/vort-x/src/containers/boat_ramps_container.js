@@ -31,7 +31,7 @@ const BoatRampsContainer = (props) => {
             zoom: 20,
         })}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="mapbox://styles/mapbox/light-v9"
+        mapStyle="mapbox://styles/mapbox/dark-v9"
         accessToken={process.env.REACT_APP_MAP_API_KEY}
         onViewportChange={setViewport}
         {...viewport}
@@ -46,7 +46,7 @@ const BoatRampsContainer = (props) => {
             "line-cap": "round",
           }}
           paint={{
-            "line-color": "#888",
+            "line-color": "#ffffff",
             "line-width": 8,
           }}
         />

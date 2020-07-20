@@ -5,7 +5,7 @@ import {Clock} from 'grommet'
 import BoatRamps from './components/BoatRamps'
 // import BoatRampsPerMaterial from './components/BoatRampsPerMaterial'
 // import BoatRampsPerSize from './components/BoatRampsPerSize'
-// import {Gm} from './components/googlemap'
+import ScatterChart from './components/ScatterChart'
 
 function App() {
   return (
@@ -15,9 +15,9 @@ function App() {
       <BoatRamps />
       {/* <BoatRampsPerMaterial />
       <BoatRampsPerSize /> */}
-      {/* <div style={{width: "70%", height: "70vh"}}>
-      <Gm />
-      </div> */}
+      <div style={{width: "70%", height: "70vh"}}>
+      <ScatterChart />
+      </div>
     </div>
   );
 }
