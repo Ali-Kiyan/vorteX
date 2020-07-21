@@ -9,7 +9,7 @@ import BoatRampsPerMaterial from './components/BoatRampsPerMaterial'
 function App() {
   return (
     <div className="App">
-      <Clock type="digital"  style={{width: "30%", height: "70vh"}}/>
+      {/* <Clock type="digital"  style={{width: "30%", height: "70vh"}}/> */}
       {/* <DefaultButton name="click me" onClick={()=>alert("hi")} color="black" /> */}
       <BoatRamps />
       <BoatRampsPerMaterial />

@@ -6,17 +6,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@urbica/react-map-gl": "^1.13.2",
     "dotenv": "^8.2.0",
     "grommet": "^2.14.0",
     "mapbox-gl": "^1.11.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-mapbox-gl": "^4.8.6",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-promise": "^0.6.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "use-force-update": "^1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",

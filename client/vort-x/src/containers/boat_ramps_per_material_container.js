@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { boatRampsPerMaterial } from "../actions/boat_ramp_actions";
+import { chartDataGenerator } from '../components/utils/helper'
+
+import { boatRampsPerMaterial, boatRampsPerMaterialFilter } from "../actions/boat_ramp_actions";
 import { bindActionCreators } from "redux";
 import {
   XAxis,
@@ -13,27 +15,8 @@ import {
 } from "recharts";
 
 const BoatRampsPerMaterialContainer = (props) => {
-  const chartDataGenerator = (data) => {
-    let Materials = [];
-    let Boatramps = [];
+   
 
-    for (let item in data) {
-      Materials.push(item);
-      Boatramps.push(data[item]);
-    }
-
-    if (Materials.length == Boatramps.length) {
-      let chartData = [];
-      // More error handing can be done where the metrics does not match
-      for (let i = 0; i < Materials.length; i++) {
-        chartData.push({ Material: Materials[i], Boatramp: Boatramps[i] });
-      }
-      return chartData;
-    } else {
-      console.error("data does not match");
-      return false;
-    }
-  };
 
   useEffect(() => {
     props.boatRampsPerMaterial();
@@ -41,11 +24,13 @@ const BoatRampsPerMaterialContainer = (props) => {
   const materialData = props.boat_ramps.boatRampsPerMaterialList;
 
   const onClickDataHandler = (chartData) => {
-    console.log(chartData.Material);
+    props.boatRampsPerMaterialFilter(chartData.Material)
   };
-
+  let k = {"a":1,"b":2}
   return (
-    <ScatterChart width={1200} height={450}>
+    <>
+    {false ? JSON.stringify(k): null}
+    {materialData ? <ScatterChart width={300} height={450}>
       <CartesianGrid strokeDasharray="5 5" />
       <XAxis dataKey="Material" name="Material" />
       <YAxis type="number" dataKey="Boatramp" name="Boatramp" />
@@ -53,11 +38,14 @@ const BoatRampsPerMaterialContainer = (props) => {
       <Legend verticalAlign="top" height={36} />
       <Scatter
         name="Boatramps per material"
-        data={chartDataGenerator(materialData)}
+        data={chartDataGenerator(materialData, "Material", "Boatramp")}
         fill="#8884d8"
         onClick={onClickDataHandler}
       />
     </ScatterChart>
+    : <p>loading...</p>
+    }
+    </>
   );
 };
 
@@ -68,7 +56,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ boatRampsPerMaterial }, dispatch);
+  return bindActionCreators({ boatRampsPerMaterial, boatRampsPerMaterialFilter }, dispatch);
 }
 
 export default connect(
