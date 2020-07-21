@@ -12,8 +12,6 @@ function App() {
       <BoatRamps />
       <BoatRampsPerMaterial />
       <BoatRampsPerSize />
-      <div style={{width: "70%", height: "70vh"}}>
-      </div>
     </div>
   );
 }

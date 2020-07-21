@@ -22,15 +22,15 @@ const BoatRampsContainer = (props) => {
     return (      
       <>
       { (Object.keys(data).length !== 0 && data["features"][0]) ? <Map
-        zoom={[20]}
+        zoom={[18]}
         center={[
           data.features[0]["geometry"]["coordinates"][0][0][0][0],
           data.features[0]["geometry"]["coordinates"][0][0][0][1],
         ]}
         style="mapbox://styles/mapbox/dark-v9"
         containerStyle={{
-          height: "100vh",
-          width: "100vw",
+          height: "100%",
+          width: "100%",
         }}
       >
         <GeoJSONLayer
