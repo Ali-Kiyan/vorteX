@@ -8,7 +8,7 @@ import BoatRampsPerSize from './components/BoatRampsPerSize'
 function App() {
   return (
     <div className="App">
-      {/* <Clock type="digital"  style={{width: "30%", height: "70vh"}}/> */}
+      <Clock type="digital" size="xlarge" style={{position: "absolute", top: 0, right:0}}/>
       <BoatRamps />
       <BoatRampsPerMaterial />
       <BoatRampsPerSize />

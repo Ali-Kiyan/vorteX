@@ -3,7 +3,7 @@ import BoatRampsPerMaterial from '../containers/boat_ramps_per_material_containe
 
 const BoatRamp = (props) => {
     return (
-        <div style={{width: "25vw", height: "80vh", marginTop: "20vh"}}>
+        <div style={{width: "57vw", height: "80vh", marginTop: "20vh"}}>
             <BoatRampsPerMaterial />
         </div>
     )

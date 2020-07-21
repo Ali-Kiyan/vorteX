@@ -1,7 +1,7 @@
 .App {
   display: flex;
   justify-content: space-around;
-  align-items: space-around;
+  align-items: center;
   background-color: #1a1b1b57;
   width: 100vw;
   height: 100vh;
