@@ -4,7 +4,6 @@ import { fetchWithCORSHeader } from '../components/utils/helper'
 export function boatRampList(){
 
     const data = fetchWithCORSHeader(BOAT_RAMPS_URL);
-
     return {
         type: 'GET_BOAT_RAMPS',
         payload: data
