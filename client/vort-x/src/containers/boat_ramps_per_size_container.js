@@ -1,5 +1,5 @@
 import React,{ useEffect} from 'react'
-import { chartDataGenerator } from '../components/utils/helper'
+import { chartDataGenerator, UIwrapper } from '../components/utils/helper'
 import { connect } from "react-redux";
 import { boatRampsPerSize, boatRampsPerSizeFilter } from "../actions/boat_ramp_actions";
 import { bindActionCreators } from "redux";
@@ -15,7 +15,6 @@ import {
 
 const BoatRampsPerSizeContainer = (props)=> {
 
-
     useEffect(()=>{
         props.boatRampsPerSize()
     },[])
@@ -24,6 +23,7 @@ const BoatRampsPerSizeContainer = (props)=> {
     const onClickDataHandler = (chartData) => {
         props.boatRampsPerSizeFilter(chartData.Size)
     };
+
   return (
     <>
     {sizeData ? <ScatterChart width={300} height={450}>
@@ -34,7 +34,7 @@ const BoatRampsPerSizeContainer = (props)=> {
       <Legend verticalAlign="top" height={36} />
       <Scatter
         name="Boatramps per size"
-        data={chartDataGenerator(sizeData, "Size", "Boatramp")}
+        data={UIwrapper(chartDataGenerator(sizeData, "Size", "Boatramp"))}
         fill="#8884d8"
         onClick={onClickDataHandler}
       />
