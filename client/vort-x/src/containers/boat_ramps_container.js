@@ -6,7 +6,7 @@ import * as MapboxGL from "mapbox-gl";
 import ReactMapboxGl, { GeoJSONLayer } from "react-mapbox-gl";
 
 const BoatRampsContainer = (props) => {
-
+  
   useEffect(() => {
     props.boatRampList();
   },[]);
@@ -15,22 +15,22 @@ const BoatRampsContainer = (props) => {
     accessToken: process.env.REACT_APP_MAP_API_KEY,
   });
 
-  let data = props.boat_ramps.boatRampsList
+  const data = props.boat_ramps.boatRampsList
     ? props.boat_ramps.boatRampsList
     : {};
     
     return (      
       <>
       { (Object.keys(data).length !== 0 && data["features"][0]) ? <Map
-        zoom={[20]}
+        zoom={[18]}
         center={[
           data.features[0]["geometry"]["coordinates"][0][0][0][0],
           data.features[0]["geometry"]["coordinates"][0][0][0][1],
         ]}
         style="mapbox://styles/mapbox/dark-v9"
         containerStyle={{
-          height: "100vh",
-          width: "100vw",
+          height: "100%",
+          width: "100%",
         }}
       >
         <GeoJSONLayer
@@ -55,27 +55,67 @@ const BoatRampsContainer = (props) => {
 };
 
 function mapStateToProps(state) {
-  if (state.boat_ramps.material !== undefined) {
-    const boatRampsList = Object.assign({}, state.boat_ramps.boatRampsList);
+
+
+
+  const materialFilterFunction = (item) => {
+    if (item["properties"]["material"] === state.boat_ramps.material) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const sizeFilterFunction = (item) => {
+    const area = item['properties']['area_'];
+    if(area>=0 && area<50 && state.boat_ramps.size === "small_size"){
+        return true
+    }else if(area>=50 && area<200 && state.boat_ramps.size === "medium_size"){
+        return true
+    }else if(area>=200 && area<526 && state.boat_ramps.size === "large_size"){
+        return true
+    }else{
+      return false
+    }
+  };
+
+  const filterData = (filterFunction, boatRampsList) => {
     const featureList = boatRampsList["features"];
-
-    const materialFilter = (item) => {
-      if (item["properties"]["material"] === state.boat_ramps.material) {
-        return true;
-      } else {
-        return false;
-      }
-    };
-
-    const filteredFeatureList = featureList.filter(materialFilter);
+    const filteredFeatureList = featureList.filter(filterFunction);
     boatRampsList["features"] = filteredFeatureList;
     boatRampsList["totalFeatures"] = filteredFeatureList.length;
+    return boatRampsList
+  }
+
+  if(state.boat_ramps.size !== undefined && state.boat_ramps.material !== undefined){
+    const boatRampsListFilteredByMaterial = filterData(materialFilterFunction, Object.assign({}, state.boat_ramps.boatRampsList));
+    const boatRampsListFilteredBySizeAndMaterial = filterData(sizeFilterFunction, Object.assign({}, boatRampsListFilteredByMaterial));
+    return {
+      boat_ramps: {
+        boatRampsList: boatRampsListFilteredBySizeAndMaterial,
+    }
+    }
+  }
+
+  else if (state.boat_ramps.material !== undefined) {
+    const boatRampsList = filterData(materialFilterFunction, Object.assign({}, state.boat_ramps.boatRampsList));
     return {
       boat_ramps: {
         boatRampsList: boatRampsList,
-      },
-    };
-  } else {
+    }
+    }
+  }
+
+  else if(state.boat_ramps.size !== undefined){
+    const boatRampsList = filterData(sizeFilterFunction, Object.assign({}, state.boat_ramps.boatRampsList));
+    return {
+      boat_ramps: {
+        boatRampsList: boatRampsList,
+    }
+    }
+  }
+
+  else {
     return {
       boat_ramps: state.boat_ramps,
     };

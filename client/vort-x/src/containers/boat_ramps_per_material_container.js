@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { chartDataGenerator } from '../components/utils/helper'
-
+import { connect } from "react-redux";
 import { boatRampsPerMaterial, boatRampsPerMaterialFilter } from "../actions/boat_ramp_actions";
 import { bindActionCreators } from "redux";
 import {
@@ -17,19 +16,17 @@ import {
 const BoatRampsPerMaterialContainer = (props) => {
    
 
-
   useEffect(() => {
     props.boatRampsPerMaterial();
   }, []);
+
   const materialData = props.boat_ramps.boatRampsPerMaterialList;
 
   const onClickDataHandler = (chartData) => {
     props.boatRampsPerMaterialFilter(chartData.Material)
   };
-  let k = {"a":1,"b":2}
   return (
     <>
-    {false ? JSON.stringify(k): null}
     {materialData ? <ScatterChart width={300} height={450}>
       <CartesianGrid strokeDasharray="5 5" />
       <XAxis dataKey="Material" name="Material" />

@@ -4,7 +4,6 @@ import { fetchWithCORSHeader } from '../components/utils/helper'
 export function boatRampList(){
 
     const data = fetchWithCORSHeader(BOAT_RAMPS_URL);
-
     return {
         type: 'GET_BOAT_RAMPS',
         payload: data
@@ -34,12 +33,16 @@ export function boatRampsPerSize(){
 
 export function boatRampsPerMaterialFilter(Material){
     return {
-        type: 'FILTER_RAMPS_PER_MATERIAL',
+        type: 'FILTER_BOAT_RAMPS_PER_MATERIAL',
         payload: {Material}
     }
-    
+
 }
 
-export function boatRampPerViewPort(){
-    
+export function boatRampsPerSizeFilter(Size){
+    return {
+        type: 'FILTER_BOAT_RAMPS_PER_SIZE',
+        payload: {Size}
+    }
+
 }
