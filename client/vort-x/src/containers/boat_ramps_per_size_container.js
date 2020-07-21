@@ -1,22 +1,48 @@
 import React,{ useEffect} from 'react'
-import { connect } from 'react-redux';
-import { boatRampsPerSize } from '../actions/boat_ramp_actions'
-import { bindActionCreators } from 'redux';
+import { chartDataGenerator } from '../components/utils/helper'
+import { connect } from "react-redux";
+import { boatRampsPerSize, boatRampsPerSizeFilter } from "../actions/boat_ramp_actions";
+import { bindActionCreators } from "redux";
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ScatterChart,
+  Scatter,
+} from "recharts";
 
 const BoatRampsPerSizeContainer = (props)=> {
 
+
     useEffect(()=>{
-
-    props.boatRampsPerSize()
-
+        props.boatRampsPerSize()
     },[])
     
     const sizeData = props.boat_ramps.boatRampsPerSizeList;
-    return (
-        <div>
-            {sizeData && Object.keys(sizeData).map((item,idx)=><p>{item}:{sizeData[item]}</p>)}
-        </div>
-    )
+    const onClickDataHandler = (chartData) => {
+        props.boatRampsPerSizeFilter(chartData.Size)
+    };
+  return (
+    <>
+    {sizeData ? <ScatterChart width={300} height={450}>
+      <CartesianGrid strokeDasharray="5 5" />
+      <XAxis dataKey="Size" name="Size" />
+      <YAxis type="number" dataKey="Boatramp" name="Boatramp" />
+      <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+      <Legend verticalAlign="top" height={36} />
+      <Scatter
+        name="Boatramps per size"
+        data={chartDataGenerator(sizeData, "Size", "Boatramp")}
+        fill="#8884d8"
+        onClick={onClickDataHandler}
+      />
+    </ScatterChart>
+    : <p>loading...</p>
+    }
+    </>
+  );
 }
 
 function mapStateToProps(state){
@@ -26,7 +52,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({boatRampsPerSize}, dispatch)
+    return bindActionCreators({boatRampsPerSize, boatRampsPerSizeFilter}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoatRampsPerSizeContainer)

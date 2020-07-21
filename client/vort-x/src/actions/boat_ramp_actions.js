@@ -34,12 +34,16 @@ export function boatRampsPerSize(){
 
 export function boatRampsPerMaterialFilter(Material){
     return {
-        type: 'FILTER_RAMPS_PER_MATERIAL',
+        type: 'FILTER_BOAT_RAMPS_PER_MATERIAL',
         payload: {Material}
     }
-    
+
 }
 
-export function boatRampPerViewPort(){
-    
+export function boatRampsPerSizeFilter(Size){
+    return {
+        type: 'FILTER_BOAT_RAMPS_PER_SIZE',
+        payload: {Size}
+    }
+
 }
