@@ -27,7 +27,7 @@ const BoatRampsPerMaterialContainer = (props) => {
   };
   return (
     <>
-    {materialData ? <ScatterChart width={300} height={450}>
+    {materialData ? <ScatterChart width={730} height={450}>
       <CartesianGrid strokeDasharray="5 5" />
       <XAxis dataKey="Material" name="Material" />
       <YAxis type="number" dataKey="Boatramp" name="Boatramp" />

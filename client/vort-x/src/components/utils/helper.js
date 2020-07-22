@@ -22,3 +22,12 @@ export const chartDataGenerator = (data, metric1, metric2) => {
       return false;
     }
   };
+
+export const UIwrapper = sizeList => sizeList.map( s => {
+   if(s.Size==="small_size")
+   return {Size:'[0,50)', Boatramp: s.Boatramp}
+   else if(s.Size==='medium_size')
+   return {Size: '[50,200)', Boatramp: s.Boatramp}
+   else if(s.Size ==='large_size')
+   return {Size: '[200,526)', Boatramp: s.Boatramp}
+ });
